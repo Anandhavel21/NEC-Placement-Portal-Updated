@@ -210,6 +210,24 @@
     </Compile>
     <Compile Include="Models\ForgetViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\StudentDetail.cs">
+      <DependentUpon>StudentDetailModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentDetailModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentDetailModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentDetailModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentDetailModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentDetailModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentDetailModels.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\UsersTbl.cs">
       <DependentUpon>EDM.tt</DependentUpon>
     </Compile>
@@ -234,6 +252,16 @@
       <DependentUpon>EDM.edmx</DependentUpon>
       <LastGenOutput>EDM.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\StudentDetailModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StudentDetailModels.edmx</DependentUpon>
+      <LastGenOutput>StudentDetailModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\StudentDetailModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StudentDetailModels.edmx</DependentUpon>
+      <LastGenOutput>StudentDetailModels.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\EDM.edmx">
@@ -242,6 +270,13 @@
     </EntityDeploy>
     <Content Include="Models\EDM.edmx.diagram">
       <DependentUpon>EDM.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\StudentDetailModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StudentDetailModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\StudentDetailModels.edmx.diagram">
+      <DependentUpon>StudentDetailModels.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -272,10 +307,11 @@
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Accounts\Signup.cshtml" />
     <Content Include="Views\Accounts\CheckMail.cshtml" />
-    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

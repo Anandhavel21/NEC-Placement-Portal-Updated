@@ -13,10 +13,10 @@ namespace AuthenticateMVC.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TACV_DBEntities : DbContext
+    public partial class StudentDetails : DbContext
     {
-        public TACV_DBEntities()
-            : base("name=TACV_DBEntities")
+        public StudentDetails()
+            : base("name=StudentDetails")
         {
         }
     
@@ -25,8 +25,6 @@ namespace AuthenticateMVC.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<UsersTbl> UsersTbls { get; set; }
-
-        public System.Data.Entity.DbSet<AuthenticateMVC.Models.StudentDetail> StudentDetails { get; set; }
+        public virtual DbSet<StudentDetail> StudentDetail { get; set; }
     }
 }
