@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TACV_DBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TACV_DBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="StudentDetails">
           <Key>
             <PropertyRef Name="Roll-No" />
@@ -12,25 +12,29 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Department" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Roll-No" Type="int" Nullable="false" />
-          <Property Name="Academic year" Type="int" Nullable="false" />
           <Property Name="Semester" Type="int" Nullable="false" />
           <Property Name="SSLC-Percentage" Type="float" Nullable="false" />
-          <Property Name="SSLC-Marksheet" Type="varchar(max)" Nullable="false" />
           <Property Name="HSC-Percentage" Type="float" Nullable="false" />
-          <Property Name="HSC-Marksheet" Type="varchar(max)" Nullable="false" />
           <Property Name="CGPA" Type="float" Nullable="false" />
           <Property Name="Active-Backlogs" Type="bit" Nullable="false" />
           <Property Name="Phone-Number" Type="int" Nullable="false" />
           <Property Name="Personal-Email" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Address" Type="varbinary" MaxLength="100" Nullable="false" />
-          <Property Name="Resume" Type="varchar(max)" Nullable="false" />
           <Property Name="Photo" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersTbl">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Passcode" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityContainer Name="TACV_DBModel1StoreContainer">
           <EntitySet Name="StudentDetails" EntityType="Self.StudentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersTbl" EntityType="Self.UsersTbl" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TACV_DBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -41,48 +45,58 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Roll_No" Type="Int32" Nullable="false" />
-          <Property Name="Academic_year" Type="Int32" Nullable="false" />
           <Property Name="Semester" Type="Int32" Nullable="false" />
           <Property Name="SSLC_Percentage" Type="Double" Nullable="false" />
-          <Property Name="SSLC_Marksheet" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="HSC_Percentage" Type="Double" Nullable="false" />
-          <Property Name="HSC_Marksheet" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CGPA" Type="Double" Nullable="false" />
           <Property Name="Active_Backlogs" Type="Boolean" Nullable="false" />
           <Property Name="Phone_Number" Type="Int32" Nullable="false" />
           <Property Name="Personal_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Address" Type="Binary" MaxLength="100" FixedLength="false" Nullable="false" />
-          <Property Name="Resume" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="StudentDetails" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TACV_DBEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="StudentDetails" EntityType="Self.StudentDetail" />
+          <EntitySet Name="UsersTbls" EntityType="TACV_DBModel1.UsersTbl" />
         </EntityContainer>
+        <EntityType Name="UsersTbl">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Passcode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TACV_DBModel1StoreContainer" CdmEntityContainer="StudentDetails">
+        <EntityContainerMapping StorageEntityContainer="TACV_DBModel1StoreContainer" CdmEntityContainer="TACV_DBEntities2">
           <EntitySetMapping Name="StudentDetails">
             <EntityTypeMapping TypeName="TACV_DBModel1.StudentDetail">
               <MappingFragment StoreEntitySet="StudentDetails">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
                 <ScalarProperty Name="Roll_No" ColumnName="Roll-No" />
-                <ScalarProperty Name="Academic_year" ColumnName="Academic year" />
                 <ScalarProperty Name="Semester" ColumnName="Semester" />
                 <ScalarProperty Name="SSLC_Percentage" ColumnName="SSLC-Percentage" />
-                <ScalarProperty Name="SSLC_Marksheet" ColumnName="SSLC-Marksheet" />
                 <ScalarProperty Name="HSC_Percentage" ColumnName="HSC-Percentage" />
-                <ScalarProperty Name="HSC_Marksheet" ColumnName="HSC-Marksheet" />
                 <ScalarProperty Name="CGPA" ColumnName="CGPA" />
                 <ScalarProperty Name="Active_Backlogs" ColumnName="Active-Backlogs" />
                 <ScalarProperty Name="Phone_Number" ColumnName="Phone-Number" />
                 <ScalarProperty Name="Personal_Email" ColumnName="Personal-Email" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Resume" ColumnName="Resume" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersTbls">
+            <EntityTypeMapping TypeName="TACV_DBModel1.UsersTbl">
+              <MappingFragment StoreEntitySet="UsersTbl">
+                <ScalarProperty Name="Passcode" ColumnName="Passcode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

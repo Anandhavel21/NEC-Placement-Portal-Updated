@@ -210,26 +210,26 @@
     </Compile>
     <Compile Include="Models\ForgetViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\StudentDetail.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentDetail.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\StudentDetail.cs">
-      <DependentUpon>StudentDetailModels.tt</DependentUpon>
+      <DependentUpon>StudentDetail.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StudentDetailModels.Context.cs">
+    <Compile Include="Models\StudentDetail.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StudentDetailModels.Context.tt</DependentUpon>
+      <DependentUpon>StudentDetail.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\StudentDetailModels.cs">
+    <Compile Include="Models\StudentDetail1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StudentDetailModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\StudentDetailModels.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentDetailModels.edmx</DependentUpon>
+      <DependentUpon>StudentDetail.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UsersTbl.cs">
-      <DependentUpon>EDM.tt</DependentUpon>
+      <DependentUpon>StudentDetail.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -252,15 +252,15 @@
       <DependentUpon>EDM.edmx</DependentUpon>
       <LastGenOutput>EDM.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\StudentDetailModels.Context.tt">
+    <Content Include="Models\StudentDetail.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StudentDetailModels.edmx</DependentUpon>
-      <LastGenOutput>StudentDetailModels.Context.cs</LastGenOutput>
+      <DependentUpon>StudentDetail.edmx</DependentUpon>
+      <LastGenOutput>StudentDetail.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\StudentDetailModels.tt">
+    <Content Include="Models\StudentDetail.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StudentDetailModels.edmx</DependentUpon>
-      <LastGenOutput>StudentDetailModels.cs</LastGenOutput>
+      <DependentUpon>StudentDetail.edmx</DependentUpon>
+      <LastGenOutput>StudentDetail1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -271,12 +271,12 @@
     <Content Include="Models\EDM.edmx.diagram">
       <DependentUpon>EDM.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\StudentDetailModels.edmx">
+    <EntityDeploy Include="Models\StudentDetail.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StudentDetailModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>StudentDetail.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\StudentDetailModels.edmx.diagram">
-      <DependentUpon>StudentDetailModels.edmx</DependentUpon>
+    <Content Include="Models\StudentDetail.edmx.diagram">
+      <DependentUpon>StudentDetail.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -307,7 +307,7 @@
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Accounts\Signup.cshtml" />
     <Content Include="Views\Accounts\CheckMail.cshtml" />
-    <Content Include="Views\Student\add.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

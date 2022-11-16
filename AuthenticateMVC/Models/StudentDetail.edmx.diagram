@@ -4,8 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f2fc1a9227ac44eabb7232a2227661e4" Name="Diagram1">
+      <Diagram DiagramId="5e7152e9a39b497d91bbe59a68bcf693" Name="Diagram1">
         <EntityTypeShape EntityType="TACV_DBModel1.StudentDetail" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TACV_DBModel1.UsersTbl" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
