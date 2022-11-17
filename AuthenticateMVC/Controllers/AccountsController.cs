@@ -47,7 +47,7 @@ namespace AuthenticateMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Signup(UsersTbl userinfo)
+        public ActionResult Signup(UserTbl userinfo)
         {
             entity.UsersTbls.Add(userinfo);
             entity.SaveChanges();

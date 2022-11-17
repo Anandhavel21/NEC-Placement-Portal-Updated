@@ -11,42 +11,19 @@ namespace AuthenticateMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class StudentDetail
     {
-        [Required]
         public string Name { get; set; }
-
-        [Required]
         public string Department { get; set; }
-
-        [Required]
-        public int Roll_No { get; set; }
-
-        [Required]
         public int Semester { get; set; }
-
-        [Required]
-        public double SSLC_Percentage { get; set; }
-
-        [Required]
-        public double HSC_Percentage { get; set; }
-
-        [Required]
         public double CGPA { get; set; }
-
-        public bool Active_Backlogs { get; set; }
-
-        [Required]
-        [DataType(DataType.PhoneNumber)]
-        public int Phone_Number { get; set; }
-
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        public string Personal_Email { get; set; }
-
-        [Required]
         public string Photo { get; set; }
+        public int RollNo { get; set; }
+        public double SSLC { get; set; }
+        public double HSC { get; set; }
+        public bool Backlogs { get; set; }
+        public int Phonenumber { get; set; }
+        public string Emailid { get; set; }
     }
 }

@@ -30,28 +30,28 @@ namespace AuthenticateMVC.Controllers
         [HttpPost]
         public ActionResult Index(StudentDetail sd,HttpPostedFileBase file)
         {
-            string mainconn = ConfigurationManager.ConnectionStrings["TACV_DBEntities"].ConnectionString;
+            string mainconn = ConfigurationManager.ConnectionStrings["TACV_DBEntities2"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            string sqlquery = "insert into StudentDetails (Name,Department,Roll_No,Academic_year,Semester,SSLC_Percentage,SSLC_Marksheet,HSC_Percentage,HSC_Marksheet,CGPA,Active_Backlogs,Phone_Number,Personal_Email,Address,Resume,Photo) values (@Name,@Department,@Roll_No,@Academic_year,@Semester,@SSLC_Percentage,@SSLC_Marksheet,@HSC_Percentage,@HSC_Marksheet,@CGPA,@Active_Backlogs,@Phone_Number,@Personal_Email,@Address,@Resume,@Photo)";
+            string sqlquery = "insert into StudentDetails (Name,Department,RollNo,Semester,SSLC,HSC,CGPA,Backlogs,Phonenumber,Emailid,Photo) values (@Name,@Department,@RollNo,@Semester,@SSLC,@HSC,@CGPA,@Backlogs,@Phonenumber,@Emailid,@Photo)";
             SqlCommand sqlcomm = new SqlCommand(sqlquery,sqlconn); 
             sqlconn.Open();
             sqlcomm.Parameters.AddWithValue("@Name", sd.Name);
             sqlcomm.Parameters.AddWithValue("@Department", sd.Department);
-            sqlcomm.Parameters.AddWithValue("@Roll_No", sd.Roll_No);
+            sqlcomm.Parameters.AddWithValue("@RollNo", sd.RollNo);
             sqlcomm.Parameters.AddWithValue("@Semester", sd.Semester);
-            sqlcomm.Parameters.AddWithValue("@SSLC_Percentage", sd.SSLC_Percentage);
-            sqlcomm.Parameters.AddWithValue("@HSC_Percentage", sd.HSC_Percentage);
+            sqlcomm.Parameters.AddWithValue("@SSLC", sd.SSLC);
+            sqlcomm.Parameters.AddWithValue("@HSC", sd.HSC);
             sqlcomm.Parameters.AddWithValue("@CGPA", sd.CGPA);
-            sqlcomm.Parameters.AddWithValue("@Active_Backlogs", sd.Active_Backlogs);
-            sqlcomm.Parameters.AddWithValue("@Phone_Number", sd.Phone_Number);
-            sqlcomm.Parameters.AddWithValue("@Personal_Email", sd.Personal_Email);
+            sqlcomm.Parameters.AddWithValue("@Backlogs", sd.Backlogs);
+            sqlcomm.Parameters.AddWithValue("@Phonenumber", sd.Phonenumber);
+            sqlcomm.Parameters.AddWithValue("@Emailid", sd.Emailid);
             if (file != null && file.ContentLength > 0)
             {
                 string filename = Path.GetFileName(file.FileName);
                 string imgpath = Path.Combine(Server.MapPath("~/Files/"), filename);
                 file.SaveAs(imgpath);
             }
-            sqlcomm.Parameters.AddWithValue("@PhotoS", "~/Files/" + sd.Roll_No + "Photo");
+            sqlcomm.Parameters.AddWithValue("@Photo", "~/Files/" + sd.RollNo);
             sqlcomm.ExecuteNonQuery();
             sqlconn.Close();
             ViewData["SuccessMessage"] = sd.Name+", Your details are saved Successfully !!";
